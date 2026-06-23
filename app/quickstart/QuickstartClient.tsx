@@ -91,7 +91,7 @@ export function QuickstartClient() {
               <div className={styles["step-title"]}>Set your API key</div>
               <div className={styles["step-desc"]}>
                 n00dles reads credentials from environment variables. Add this to your shell
-                profile or <code className={styles.code}>.env</code> file.
+                profile or <code className={styles.code}>.env</code>{" "}file.
               </div>
               <div className={styles["code-block"]}>
                 <div className={styles["code-block-hd"]}>
@@ -150,8 +150,9 @@ export function QuickstartClient() {
             <div className={styles["step-body"]}>
               <div className={styles["step-title"]}>Run it</div>
               <div className={styles["step-desc"]}>
-                Add <code className={styles.code}>run()</code> and execute your file. n00dles
-                will call each agent in sequence, retrying on failures.
+                Add <code className={styles.code}>run()</code>{" "}
+                and execute your file. n00dles will call each agent in sequence, retrying on
+                failures.
               </div>
               <div className={styles["code-block"]}>
                 <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>python — pipeline.py (final)</span></div>

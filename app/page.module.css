@@ -140,6 +140,15 @@
   margin-bottom: 40px;
   animation: fadeIn 0.8s 0.5s ease both;
 }
+.hero-tagline {
+  font-family: var(--fm);
+  font-size: 13.5px;
+  color: var(--ts);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 32px;
+  animation: fadeIn 0.8s 0.55s ease both;
+}
 .hero-actions {
   display: flex;
   align-items: center;

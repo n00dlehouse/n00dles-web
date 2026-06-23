@@ -100,6 +100,33 @@
   color: var(--tp);
   font-weight: 500;
 }
+.metaphor-heading {
+  font-family: var(--fd);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--tp);
+  margin: 36px 0 14px;
+}
+.metaphor-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+.metaphor-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: var(--ts);
+  line-height: 1.7;
+}
+.metaphor-icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
 .story-aside {
   display: flex;
   flex-direction: column;

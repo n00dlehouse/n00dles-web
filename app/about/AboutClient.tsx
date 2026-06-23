@@ -53,14 +53,35 @@ export function AboutClient() {
               </p>
               <p>
                 So we did what engineers do when nothing fits:{" "}
-                <strong>we built it ourselves.</strong> First as an internal library, then as an
-                open-source project, then as the thing you&apos;re reading about right now.
+                <strong>we built it ourselves.</strong>{" "}
+                First as an internal library, then as an open-source project, then as the thing
+                you&apos;re reading about right now.
               </p>
               <p>
                 n00dles is our answer to the question &quot;what would a multi-agent framework
                 look like if it was designed for production from day one, by people who&apos;ve
                 had their pipelines wake them up at 2am?&quot;
               </p>
+
+              <h3 className={styles["metaphor-heading"]}>Okay, but why &quot;noodles&quot;?</h3>
+              <p>
+                We get asked this constantly, and honestly, the metaphor holds up better than we
+                expected when we picked the name over beers:
+              </p>
+              <ul className={styles["metaphor-list"]}>
+                <li>
+                  <span className={styles["metaphor-icon"]}>🍜</span>
+                  <span><strong>Noodles are long, connected, tangled threads</strong> — that&apos;s an agent chain. One agent&apos;s output twists straight into the next agent&apos;s input.</span>
+                </li>
+                <li>
+                  <span className={styles["metaphor-icon"]}>⛓</span>
+                  <span><strong>Multiple noodles in one bowl</strong> — that&apos;s parallel agents. A dozen pipelines can run at once, sharing the same plate, never tangling with each other.</span>
+                </li>
+                <li>
+                  <span className={styles["metaphor-icon"]}>🥣</span>
+                  <span><strong>A bowl holds it all together</strong> — that&apos;s the orchestration runtime. Without it, you just have a mess of cold noodles on the counter. With it, dinner&apos;s ready.</span>
+                </li>
+              </ul>
             </div>
             <div className={styles["story-aside"]} data-reveal data-delay="2">
               <div className={styles["story-stat"]}>

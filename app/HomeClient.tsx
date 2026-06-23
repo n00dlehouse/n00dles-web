@@ -53,6 +53,11 @@ export function HomeClient() {
               Open-source multi-agent AI orchestration built for engineers who ship. Chain
               agents, manage state, handle failures — without 800 lines of boilerplate.
             </p>
+            <p className={styles["hero-tagline"]}>
+              🍜 Noodles tangle into chains — that&apos;s your agent pipeline. Drop a few more in
+              the bowl and they cook in parallel. The bowl itself? That&apos;s the runtime
+              holding it all together.
+            </p>
             <div className={styles["hero-actions"]}>
               <Link href="/quickstart" className={styles["btn-primary"]}>
                 Get started →
