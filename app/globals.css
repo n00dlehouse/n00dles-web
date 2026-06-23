@@ -1,17 +1,26 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
+  --bg: #080810;
+  --bg-card: #0f0f1a;
+  --bg-raised: #141426;
+  --border: rgba(245, 200, 66, 0.12);
+  --border-mid: rgba(245, 200, 66, 0.25);
+  --border-hi: rgba(245, 200, 66, 0.6);
+  --yellow: #f5c842;
+  --ydim: rgba(245, 200, 66, 0.08);
+  --yglow: rgba(245, 200, 66, 0.15);
+  --tp: #f0f0f4;
+  --ts: #8888a8;
+  --tm: #444460;
+  --green: #1d9e75;
+  --red: #e24b4a;
+  --blue: #82aaff;
+  --fd: var(--font-space-grotesk), sans-serif;
+  --fm: var(--font-jetbrains-mono), monospace;
+  --fb: var(--font-inter), sans-serif;
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
 }
 
 html,
@@ -20,21 +29,23 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--tp);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -42,8 +53,30 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  font: inherit;
+}
+
+/* Shared scroll-reveal animation, used across index/about/blog/pricing/quickstart */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-reveal][data-v] {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-delay="1"] { transition-delay: 0.1s; }
+[data-delay="2"] { transition-delay: 0.2s; }
+[data-delay="3"] { transition-delay: 0.3s; }
+[data-delay="4"] { transition-delay: 0.4s; }
+[data-delay="5"] { transition-delay: 0.5s; }
+[data-delay="6"] { transition-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
