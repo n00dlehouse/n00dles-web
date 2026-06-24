@@ -26,7 +26,7 @@ export function MarketingNav({ active }: { active?: ActivePage }) {
             <li><Link href="/blog" className={linkClass("blog")}>Blog</Link></li>
           </ul>
           <div className={styles["nav-right"]}>
-            <a href="https://github.com/n00dles/n00dles" className={styles["nav-cta"]}>
+            <a href="https://github.com/n00dlehouse" className={styles["nav-cta"]}>
               ★ Star on GitHub
             </a>
             <button
@@ -53,7 +53,7 @@ export function MarketingNav({ active }: { active?: ActivePage }) {
         <Link href="/pricing" onClick={close}>Pricing</Link>
         <Link href="/about" onClick={close}>About</Link>
         <Link href="/blog" onClick={close}>Blog</Link>
-        <a href="https://github.com/n00dles/n00dles" className={styles.accent}>
+        <a href="https://github.com/n00dlehouse" className={styles.accent}>
           ★ Star on GitHub
         </a>
       </div>

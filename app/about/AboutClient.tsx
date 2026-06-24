@@ -1,12 +1,36 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MarketingNav } from "@/components/MarketingNav";
 import { useReveal } from "@/lib/useReveal";
+import { DEPT_FILTERS, TEAM, type Dept, type TeamMember } from "./team";
 import styles from "./page.module.css";
+
+const JOBS = [
+  { title: "Senior Backend Engineer", tags: ["Engineering", "Remote", "Python / Rust"] },
+  { title: "ML Infrastructure Engineer", tags: ["Engineering", "Remote", "LLM Systems"] },
+  { title: "Developer Advocate (APAC)", tags: ["GTM", "Remote — APAC", "DevRel"] },
+  { title: "Product Designer", tags: ["Design", "Remote", "Developer Tools"] },
+];
 
 export function AboutClient() {
   useReveal();
+  const [activeDept, setActiveDept] = useState<"all" | Dept>("all");
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  useEffect(() => {
+    if (!selectedMember) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedMember(null);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [selectedMember]);
 
   return (
     <>
@@ -109,43 +133,45 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* VALUES */}
+      {/* PHILOSOPHY */}
       <section className={styles["values-section"]}>
         <div className={styles.container}>
           <div style={{ textAlign: "center" }} data-reveal>
-            <div className={styles["section-eyebrow"]}>What we believe</div>
+            <div className={styles["section-eyebrow"]}>How we work</div>
             <h2 style={{ fontFamily: "var(--fd)", fontSize: "clamp(28px,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}>
-              Three things we don&apos;t compromise on.
+              The n00dles philosophy
             </h2>
           </div>
-          <div className={styles["values-grid"]}>
-            <div className={styles["value-card"]} data-reveal data-delay="1">
-              <div className={styles["value-icon"]}>⚙</div>
-              <div className={styles["value-title"]}>Engineer-first</div>
-              <div className={styles["value-body"]}>
-                We write documentation for the person debugging at 2am with a broken pipeline —
-                not for VPs in boardrooms. Every API decision starts with: &quot;would I want to
-                use this at 3,000 lines of code?&quot; If the answer is no, we cut it.
-              </div>
+          <div className={styles["values-grid"]} data-reveal>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>&gt;&gt;</span>
+              <div className={styles["value-title"]}>Ship before perfect</div>
+              <div className={styles["value-body"]}>Every feature ships when it works, not when it&apos;s flawless. We iterate in public, break things in dev, and learn from real usage. Perfect is the enemy of production.</div>
             </div>
-            <div className={styles["value-card"]} data-reveal data-delay="2">
-              <div className={styles["value-icon"]}>⛓</div>
-              <div className={styles["value-title"]}>Open by default</div>
-              <div className={styles["value-body"]}>
-                The core framework is free, MIT-licensed, and will never have features
-                paywalled. We believe the infrastructure layer of AI pipelines should be a public
-                good. We make money on managed cloud hosting, not on restricting access to the
-                tools.
-              </div>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>[]</span>
+              <div className={styles["value-title"]}>Type everything</div>
+              <div className={styles["value-body"]}>Untyped interfaces are a lie. We type our I/O contracts, our API responses, our internal state. If it can fail at runtime because of a bad type, it should fail at definition time instead.</div>
             </div>
-            <div className={styles["value-card"]} data-reveal data-delay="3">
-              <div className={styles["value-icon"]}>🛡️</div>
-              <div className={styles["value-title"]}>Production-grade or nothing</div>
-              <div className={styles["value-body"]}>
-                We don&apos;t ship features that work in demos but fail under real load.
-                Everything we build goes through our own production systems first. If we
-                wouldn&apos;t trust it with a client&apos;s pipeline, we don&apos;t release it.
-              </div>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>0x</span>
+              <div className={styles["value-title"]}>Defaults that work</div>
+              <div className={styles["value-body"]}>The default behavior should be correct for 80% of use cases. Configuration exists for the other 20%. We never make the user configure their way to a working system.</div>
+            </div>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>↺</span>
+              <div className={styles["value-title"]}>Failures are first-class</div>
+              <div className={styles["value-body"]}>Things fail. LLMs return garbage. APIs rate-limit. Networks drop. We design for failure as a normal operating condition, not an edge case. Retry logic isn&apos;t an afterthought.</div>
+            </div>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>∅</span>
+              <div className={styles["value-title"]}>No magic</div>
+              <div className={styles["value-body"]}>Frameworks that hide what they&apos;re doing create debugging nightmares. n00dles is readable. You can trace exactly what every call does, where every token goes, and why every decision was made.</div>
+            </div>
+            <div className={styles["value-cell"]}>
+              <span className={styles["value-glyph"]}>🍜</span>
+              <div className={styles["value-title"]}>Take the work seriously</div>
+              <div className={styles["value-body"]}>We named our company after a noodle dish. We take the puns seriously too. Life&apos;s too short for soulless dev tools. Good work and good humor aren&apos;t mutually exclusive.</div>
             </div>
           </div>
         </div>
@@ -154,43 +180,80 @@ export function AboutClient() {
       {/* TEAM */}
       <section className={styles["team-section"]}>
         <div className={styles.container}>
-          <div style={{ textAlign: "center" }} data-reveal>
-            <div className={styles["section-eyebrow"]}>The team</div>
-            <h2 style={{ fontFamily: "var(--fd)", fontSize: "clamp(28px,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: 8 }}>
-              Five engineers who got tired of the alternative.
+          <div className={styles["team-intro"]} data-reveal>
+            <div className={styles["section-eyebrow"]} style={{ justifyContent: "flex-start" }}>The team</div>
+            <h2 style={{ fontFamily: "var(--fd)", fontSize: "clamp(28px,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}>
+              Meet the noodles.
             </h2>
+            <p>We&apos;re engineers, designers, and devrel humans distributed across 9 countries and every timezone that has decent ramen. Click any card to learn more. Hover to see their noodle type — yes, we assigned everyone one.</p>
           </div>
-          <div className={styles["team-grid"]}>
-            <div className={styles["team-card"]} data-reveal data-delay="1">
-              <div className={styles["team-avatar"]}>ZO</div>
-              <div className={styles["team-name"]}>Zara Okonkwo</div>
-              <div className={styles["team-role"]}>Co-founder, CEO</div>
-              <div className={styles["team-handle"]}>@zara_noodles</div>
-            </div>
-            <div className={styles["team-card"]} data-reveal data-delay="2">
-              <div className={styles["team-avatar"]}>RT</div>
-              <div className={styles["team-name"]}>Ryo Tanaka</div>
-              <div className={styles["team-role"]}>Co-founder, CTO</div>
-              <div className={styles["team-handle"]}>@ryo_noodles</div>
-            </div>
-            <div className={styles["team-card"]} data-reveal data-delay="3">
-              <div className={styles["team-avatar"]}>LM</div>
-              <div className={styles["team-name"]}>Leo Marchetti</div>
-              <div className={styles["team-role"]}>Head of Engineering</div>
-              <div className={styles["team-handle"]}>@leo_noodles</div>
-            </div>
-            <div className={styles["team-card"]} data-reveal data-delay="4">
-              <div className={styles["team-avatar"]}>PS</div>
-              <div className={styles["team-name"]}>Priya Sharma</div>
-              <div className={styles["team-role"]}>Developer Relations</div>
-              <div className={styles["team-handle"]}>@priya_noodles</div>
-            </div>
-            <div className={styles["team-card"]} data-reveal data-delay="5">
-              <div className={styles["team-avatar"]}>FM</div>
-              <div className={styles["team-name"]}>Finn McCarthy</div>
-              <div className={styles["team-role"]}>Design</div>
-              <div className={styles["team-handle"]}>@finn_noodles</div>
-            </div>
+
+          <div className={styles["dept-filter"]} role="group" aria-label="Filter team by department" data-reveal data-delay="1">
+            {DEPT_FILTERS.map((f) => (
+              <button
+                key={f.id}
+                className={`${styles["dept-btn"]}${activeDept === f.id ? ` ${styles.active}` : ""}`}
+                onClick={() => setActiveDept(f.id)}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
+          <div className={styles["team-grid"]} role="list">
+            {TEAM.map((member, i) => {
+              const isHidden = activeDept !== "all" && member.dept !== activeDept;
+              return (
+                <div
+                  key={member.name}
+                  className={`${styles["member-card"]}${isHidden ? ` ${styles.hidden}` : ""}`}
+                  role="listitem"
+                  onClick={() => setSelectedMember(member)}
+                  data-reveal
+                  data-delay={String((i % 3) + 1)}
+                >
+                  <div className={styles["noodle-type"]}>{member.noodleType}</div>
+                  <div className={styles["avatar-bowl"]}>
+                    <div className={styles["avatar-initials"]}>{member.initials}</div>
+                    <div className={styles["avatar-noodle"]}>{member.emoji}</div>
+                  </div>
+                  <div className={styles["member-dept"]}>{member.deptLabel}</div>
+                  <div className={styles["member-name"]}>{member.name}</div>
+                  <div className={styles["member-role"]}>{member.role}</div>
+                  <div className={styles["member-handle"]}>{member.email}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* JOIN THE BOWL */}
+      <section className={styles["jobs-section"]}>
+        <div className={styles.container}>
+          <div data-reveal>
+            <div className={styles["section-eyebrow"]} style={{ justifyContent: "flex-start" }}>We&apos;re hiring</div>
+            <h2 style={{ fontFamily: "var(--fd)", fontSize: "clamp(28px,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}>
+              Join the bowl.
+            </h2>
+            <p style={{ color: "var(--ts)", marginTop: 12, maxWidth: 520, fontSize: 15, lineHeight: 1.7 }}>
+              We&apos;re a fully remote team that cares deeply about what we build and how we build it. Pick your noodle type on day one. That part is mandatory.
+            </p>
+          </div>
+          <div className={styles["jobs-grid"]} role="list" data-reveal data-delay="1">
+            {JOBS.map((job) => (
+              <div key={job.title} className={styles["job-row"]} role="listitem">
+                <div className={styles["job-info"]}>
+                  <div className={styles["job-title"]}>{job.title}</div>
+                  <div className={styles["job-meta"]}>
+                    {job.tags.map((tag) => (
+                      <span key={tag} className={styles["job-tag"]}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <span className={styles["job-arrow"]}>→</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -217,7 +280,7 @@ export function AboutClient() {
                 platform is how we fund the open-source work — not the other way around.
               </p>
               <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-                <a href="https://github.com/n00dles/n00dles" className={styles["btn-primary"]} style={{ fontSize: 13, padding: "10px 20px" }}>
+                <a href="https://github.com/n00dlehouse" className={styles["btn-primary"]} style={{ fontSize: 13, padding: "10px 20px" }}>
                   ★ Star on GitHub
                 </a>
                 <a href="https://discord.gg/n00dles" className={styles["btn-ghost"]} style={{ fontSize: 13, padding: "10px 20px" }}>
@@ -256,7 +319,7 @@ export function AboutClient() {
             <p className={styles["cta-sub"]}>Start building for free, contribute to the project, or come work with us.</p>
             <div className={styles["cta-actions"]}>
               <Link href="/quickstart" className={styles["btn-primary"]}>Get started →</Link>
-              <a href="https://github.com/n00dles/n00dles" className={styles["btn-ghost"]}>Contribute on GitHub</a>
+              <a href="https://github.com/n00dlehouse" className={styles["btn-ghost"]}>Contribute on GitHub</a>
             </div>
           </div>
         </div>
@@ -285,7 +348,7 @@ export function AboutClient() {
               <ul>
                 <li><Link href="/docs">Documentation</Link></li>
                 <li><Link href="/quickstart">Quickstart</Link></li>
-                <li><a href="https://github.com/n00dles/n00dles">GitHub</a></li>
+                <li><a href="https://github.com/n00dlehouse">GitHub</a></li>
               </ul>
             </div>
             <div className={styles["footer-col"]}>
@@ -304,6 +367,48 @@ export function AboutClient() {
           </div>
         </div>
       </footer>
+
+      {/* TEAM MEMBER MODAL */}
+      {selectedMember && (
+        <div
+          className={`${styles["modal-overlay"]} ${styles.open}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedMember.name}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedMember(null);
+          }}
+        >
+          <div className={styles.modal}>
+            <button className={styles["modal-close"]} onClick={() => setSelectedMember(null)} aria-label="Close">✕</button>
+            <div className={styles["modal-avatar"]}>{selectedMember.emoji}</div>
+            <div className={styles["modal-name"]}>{selectedMember.name}</div>
+            <div className={styles["modal-role"]}>{selectedMember.role}</div>
+            <div className={styles["modal-noodle-type"]}>noodle type: {selectedMember.noodleType}</div>
+            <div className={styles["modal-bio"]}>
+              {selectedMember.bio.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+            <div className={styles["modal-tags"]}>
+              {selectedMember.tags.map((tag) => (
+                <span key={tag} className={styles["modal-tag"]}>{tag}</span>
+              ))}
+            </div>
+            <div className={styles["modal-footer"]}>
+              <a className={styles["modal-btn"]} href={`mailto:${selectedMember.email}`}>✉ {selectedMember.email}</a>
+              <a
+                className={`${styles["modal-btn"]} ${styles.primary}`}
+                href={`https://twitter.com/${selectedMember.twitter.replace("@", "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ↗ {selectedMember.twitter}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

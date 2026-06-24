@@ -285,7 +285,7 @@ export function PricingClient() {
               <ul>
                 <li><Link href="/docs">Documentation</Link></li>
                 <li><Link href="/quickstart">Quickstart</Link></li>
-                <li><a href="https://github.com/n00dles/n00dles">GitHub</a></li>
+                <li><a href="https://github.com/n00dlehouse">GitHub</a></li>
               </ul>
             </div>
             <div className={styles["footer-col"]}>

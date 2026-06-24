@@ -44,7 +44,7 @@ export function DocsClient() {
             <li><Link href="/blog">Blog</Link></li>
           </ul>
           <div className={styles["nav-right"]}>
-            <a href="https://github.com/n00dles/n00dles" className={styles["nav-cta"]}>★ GitHub</a>
+            <a href="https://github.com/n00dlehouse" className={styles["nav-cta"]}>★ GitHub</a>
             <button
               className={`${styles.hamburger}${navOpen ? ` ${styles["is-open"]}` : ""}`}
               onClick={() => setNavOpen((o) => !o)}
@@ -137,8 +137,8 @@ export function DocsClient() {
       </div>
 
       <div className={styles["docs-footer"]}>
-        <div>© 2026 n00dles · <a href="https://github.com/n00dles/n00dles">GitHub</a> · <a href="https://discord.gg/n00dles">Discord</a></div>
-        <div>Edit this page on <a href="https://github.com/n00dles/n00dles">GitHub →</a></div>
+        <div>© 2026 n00dles · <a href="https://github.com/n00dlehouse">GitHub</a> · <a href="https://discord.gg/n00dles">Discord</a></div>
+        <div>Edit this page on <a href="https://github.com/n00dlehouse">GitHub →</a></div>
       </div>
     </>
   );

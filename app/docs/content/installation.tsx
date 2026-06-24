@@ -41,7 +41,7 @@ export function Body({ styles }: DocBodyProps) {
       </div>
       <div className={`${styles.callout} ${styles.info}`}>
         <span className={styles["callout-icon"]}>ℹ</span>
-        <div>For the latest unreleased features, install from GitHub: <code className={styles.code}>pip install git+https://github.com/n00dles/n00dles</code></div>
+        <div>For the latest unreleased features, install from GitHub: <code className={styles.code}>pip install git+https://github.com/n00dlehouse</code></div>
       </div>
 
       <h2 className={styles["doc-h2"]} id="api-keys">Configure API keys</h2>

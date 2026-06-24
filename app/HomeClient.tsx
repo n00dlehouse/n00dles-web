@@ -62,7 +62,7 @@ export function HomeClient() {
               <Link href="/quickstart" className={styles["btn-primary"]}>
                 Get started →
               </Link>
-              <a href="https://github.com/n00dles/n00dles" className={styles["btn-ghost"]}>
+              <a href="https://github.com/n00dlehouse" className={styles["btn-ghost"]}>
                 View on GitHub
               </a>
             </div>
@@ -449,7 +449,7 @@ result <span className={styles.op}>=</span> run(triage, text<span className={sty
             <p className={styles["cta-sub"]}>Your LLM agents should be working. You should be shipping. n00dles gets out of your way.</p>
             <div className={styles["cta-actions"]}>
               <Link href="/quickstart" className={styles["btn-primary"]}>Read the docs →</Link>
-              <a href="https://github.com/n00dles/n00dles" className={styles["btn-ghost"]}>Star on GitHub ★</a>
+              <a href="https://github.com/n00dlehouse" className={styles["btn-ghost"]}>Star on GitHub ★</a>
             </div>
           </div>
         </div>
@@ -480,7 +480,7 @@ result <span className={styles.op}>=</span> run(triage, text<span className={sty
                 <li><Link href="/docs">Documentation</Link></li>
                 <li><Link href="/quickstart">Quickstart</Link></li>
                 <li><Link href="/docs">API Reference</Link></li>
-                <li><a href="https://github.com/n00dles/n00dles">GitHub</a></li>
+                <li><a href="https://github.com/n00dlehouse">GitHub</a></li>
               </ul>
             </div>
             <div className={styles["footer-col"]}>

@@ -198,7 +198,7 @@ export function BlogClient() {
               <p>Open-source multi-agent AI orchestration.</p>
             </div>
             <div className={styles["footer-col"]}><h5>Product</h5><ul><li><Link href="/#features">Features</Link></li><li><Link href="/pricing">Pricing</Link></li></ul></div>
-            <div className={styles["footer-col"]}><h5>Developers</h5><ul><li><Link href="/docs">Docs</Link></li><li><Link href="/quickstart">Quickstart</Link></li><li><a href="https://github.com/n00dles/n00dles">GitHub</a></li></ul></div>
+            <div className={styles["footer-col"]}><h5>Developers</h5><ul><li><Link href="/docs">Docs</Link></li><li><Link href="/quickstart">Quickstart</Link></li><li><a href="https://github.com/n00dlehouse">GitHub</a></li></ul></div>
             <div className={styles["footer-col"]}><h5>Company</h5><ul><li><Link href="/about">About</Link></li><li><Link href="/blog">Blog</Link></li><li><a href="https://discord.gg/n00dles">Discord</a></li></ul></div>
           </div>
           <div className={styles["footer-bottom"]}><span>© 2026 n00dles. MIT License.</span><span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.1.0-beta</span></div>

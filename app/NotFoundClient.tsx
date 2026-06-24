@@ -82,13 +82,13 @@ export function NotFoundClient() {
           <Link href="/about" className={styles["quick-link"]}>About</Link>
           <Link href="/blog" className={styles["quick-link"]}>Blog</Link>
           <a href="https://discord.gg/n00dles" className={styles["quick-link"]}>Discord</a>
-          <a href="https://github.com/n00dles/n00dles" className={styles["quick-link"]}>GitHub</a>
+          <a href="https://github.com/n00dlehouse" className={styles["quick-link"]}>GitHub</a>
         </div>
       </main>
 
       <footer className={styles.footer}>
         <Link href="/">n00dles.io</Link>
-        <a href="https://github.com/n00dles/n00dles">GitHub</a>
+        <a href="https://github.com/n00dlehouse">GitHub</a>
         <a href="https://discord.gg/n00dles">Discord</a>
         <Link href="/pricing">Pricing</Link>
       </footer>
