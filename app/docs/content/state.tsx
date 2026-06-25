@@ -35,8 +35,8 @@ export function Body({ styles }: DocBodyProps) {
         </thead>
         <tbody>
           <tr><td>sqlite://</td><td>Local dev, single-node, low volume</td><td>Zero setup, file-based, ships by default</td></tr>
-          <tr><td>redis://</td><td>Multi-worker, horizontally scaled</td><td>Shared state across processes/machines</td></tr>
-          <tr><td>postgres://</td><td>Long-term retention, audit requirements</td><td>Available on Team/Enterprise plans</td></tr>
+          <tr><td>redis://<span className={styles["soon-badge"]}>Soon</span></td><td>Multi-worker, horizontally scaled</td><td>Shared state across processes/machines</td></tr>
+          <tr><td>postgres://<span className={styles["soon-badge"]}>Soon</span></td><td>Long-term retention, audit requirements</td><td>Available on Team/Enterprise plans</td></tr>
         </tbody>
       </table>
 

@@ -17,10 +17,9 @@ import * as exResearch from "./content/examples/research-pipeline";
 import * as exContent from "./content/examples/content-factory";
 import * as exDocument from "./content/examples/document-processor";
 import * as exSupport from "./content/examples/support-triage";
-import type { ReactElement } from "react";
 import type { DocBodyProps, DocMeta } from "./content/types";
 
-type DocModule = { meta: DocMeta; Body: (props: DocBodyProps) => ReactElement };
+type DocModule = { meta: DocMeta; Body: (props: DocBodyProps) => React.ReactElement };
 
 const MODULES: Record<string, DocModule> = {
   installation,
@@ -92,54 +91,56 @@ export const DOCS: Record<string, DocEntry> = {
   ...buildChain(EXAMPLES_ORDER),
 };
 
-export const SIDEBAR = [
+type SidebarItem = { id: string; label: string; soon: boolean };
+
+export const SIDEBAR: { id: string; label: string; items: SidebarItem[] }[] = [
   {
     id: "start",
     label: "Getting Started",
     items: [
-      { id: "installation", label: "Installation" },
-      { id: "quickstart", label: "Quick start" },
-      { id: "first-pipeline", label: "Your first pipeline" },
+      { id: "installation", label: "Installation", soon: false },
+      { id: "quickstart", label: "Quick start", soon: false },
+      { id: "first-pipeline", label: "Your first pipeline", soon: false },
     ],
   },
   {
     id: "concepts",
     label: "Core Concepts",
     items: [
-      { id: "agents", label: "Agents" },
-      { id: "pipelines", label: "Pipelines" },
-      { id: "state", label: "State management" },
-      { id: "errors", label: "Error handling" },
+      { id: "agents", label: "Agents", soon: false },
+      { id: "pipelines", label: "Pipelines", soon: false },
+      { id: "state", label: "State management", soon: false },
+      { id: "errors", label: "Error handling", soon: false },
     ],
   },
   {
     id: "api",
     label: "API Reference",
     items: [
-      { id: "agent-api", label: "@agent" },
-      { id: "pipeline-api", label: "pipeline()" },
-      { id: "run-api", label: "run()" },
-      { id: "parallel-api", label: "parallel()" },
-      { id: "branch-api", label: "branch()" },
+      { id: "agent-api", label: "@agent", soon: false },
+      { id: "pipeline-api", label: "pipeline()", soon: false },
+      { id: "run-api", label: "run()", soon: false },
+      { id: "parallel-api", label: "parallel()", soon: false },
+      { id: "branch-api", label: "branch()", soon: false },
     ],
   },
   {
     id: "guides",
     label: "Guides",
     items: [
-      { id: "deploy", label: "Production deploy" },
-      { id: "testing", label: "Testing" },
-      { id: "obs", label: "Observability" },
+      { id: "deploy", label: "Production deploy", soon: true },
+      { id: "testing", label: "Testing", soon: true },
+      { id: "obs", label: "Observability", soon: false },
     ],
   },
   {
     id: "ex",
     label: "Examples",
     items: [
-      { id: "ex-research", label: "Research pipeline" },
-      { id: "ex-content", label: "Content factory" },
-      { id: "ex-document", label: "Document processor" },
-      { id: "ex-support", label: "Support triage" },
+      { id: "ex-research", label: "Research pipeline", soon: false },
+      { id: "ex-content", label: "Content factory", soon: false },
+      { id: "ex-document", label: "Document processor", soon: false },
+      { id: "ex-support", label: "Support triage", soon: false },
     ],
   },
 ];

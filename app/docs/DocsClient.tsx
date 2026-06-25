@@ -86,6 +86,7 @@ export function DocsClient() {
                 {section.items.map((item) => (
                   <span key={item.id} className={linkClass(item.id)} onClick={() => setActivePage(item.id)}>
                     {item.label}
+                    {item.soon && <span className={styles["soon-badge"]}>Soon</span>}
                   </span>
                 ))}
               </div>

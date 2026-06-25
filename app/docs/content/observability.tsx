@@ -31,7 +31,16 @@ export function Body({ styles }: DocBodyProps) {
       <p className={styles["doc-p"]}>Point n00dles at any OpenTelemetry-compatible collector, or use a built-in exporter:</p>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>python</span></div>
-        <pre><span className={styles.kw}>from</span> <span className={styles.cls}>n00dles</span> <span className={styles.kw}>import</span> configure{"\n\n"}<span className={styles.cm}># Generic OpenTelemetry</span>{"\n"}configure(otel_endpoint<span className={styles.op}>=</span><span className={styles.str}>&quot;https://otel-collector.internal:4317&quot;</span>){"\n\n"}<span className={styles.cm}># Built-in exporters</span>{"\n"}configure(trace_exporter<span className={styles.op}>=</span><span className={styles.str}>&quot;langfuse&quot;</span>, langfuse_public_key<span className={styles.op}>=</span><span className={styles.str}>&quot;...&quot;</span>){"\n"}configure(trace_exporter<span className={styles.op}>=</span><span className={styles.str}>&quot;helicone&quot;</span>, helicone_api_key<span className={styles.op}>=</span><span className={styles.str}>&quot;...&quot;</span>)</pre>
+        <pre><span className={styles.kw}>from</span> <span className={styles.cls}>n00dles</span> <span className={styles.kw}>import</span> configure{"\n\n"}<span className={styles.cm}># Generic OpenTelemetry — available now</span>{"\n"}configure(otel_endpoint<span className={styles.op}>=</span><span className={styles.str}>&quot;https://otel-collector.internal:4317&quot;</span>){"\n\n"}<span className={styles.cm}># Built-in exporters — coming soon</span>{"\n"}configure(trace_exporter<span className={styles.op}>=</span><span className={styles.str}>&quot;langfuse&quot;</span>, langfuse_public_key<span className={styles.op}>=</span><span className={styles.str}>&quot;...&quot;</span>){"\n"}configure(trace_exporter<span className={styles.op}>=</span><span className={styles.str}>&quot;helicone&quot;</span>, helicone_api_key<span className={styles.op}>=</span><span className={styles.str}>&quot;...&quot;</span>)</pre>
+      </div>
+      <div className={`${styles.callout} ${styles.soon}`}>
+        <span className={styles["callout-icon"]}>🔜</span>
+        <div>
+          <strong>Coming soon.</strong> The dedicated Langfuse and Helicone exporters aren&apos;t in
+          the current release yet. The generic OpenTelemetry exporter above is real and available
+          today (<code className={styles.code}>pip install get-n00dles[otel]</code>) — point it at
+          any OTel collector, including ones Langfuse/Helicone already accept.
+        </div>
       </div>
       <div className={`${styles.callout} ${styles.tip}`}>
         <span className={styles["callout-icon"]}>✓</span>

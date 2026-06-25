@@ -47,7 +47,7 @@ export function HomeClient() {
             <h1 className={styles["hero-title"]} id="hero-title">
               <span className={styles.l1}>Your LLM pipelines</span>
               <span className={styles.l2}>are spaghetti.</span>
-              <span className={styles.l3}>n00dles fixes that.</span>
+              <span className={styles.l3}>n<span className={styles.accent}>00</span>dles fixes that.</span>
             </h1>
             <p className={styles["hero-sub"]}>
               Open-source multi-agent AI orchestration built for engineers who ship. Chain
@@ -252,7 +252,7 @@ export function HomeClient() {
 result <span className={styles.op}>=</span> run(content_pipeline, topic<span className={styles.op}>=</span><span className={styles.str}>&quot;Banking 5.0&quot;</span>){"\n"}<span className={styles.fn}>print</span>(result.output)</div>
               </div>
               <div className={codePane(1)}>
-                <div className={styles["code-body"]}><span className={styles.kw}>from</span> <span className={styles.cls}>n00dles</span> <span className={styles.kw}>import</span> agent, pipeline, parallel, run{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;gpt-4o&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>scrape_news</span>(query: <span className={styles.cls}>str</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>list</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Scrape latest news articles for the query.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;gpt-4o&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>scrape_twitter</span>(query: <span className={styles.cls}>str</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>list</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Pull relevant recent posts for the query.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;claude-sonnet-4-6&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>merge_signals</span>(news: <span className={styles.cls}>list</span>, tweets: <span className={styles.cls}>list</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>dict</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Merge and rank all signals by relevance.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.cm}># parallel() runs both scrapers simultaneously</span>{"\n"}intel_pipeline <span className={styles.op}>=</span> pipeline({"\n"}    parallel(scrape_news, scrape_twitter) <span className={styles.op}>&gt;&gt;</span> merge_signals,{"\n"}    timeout<span className={styles.op}>=</span><span className={styles.num}>20</span>{"\n"})
+                <div className={styles["code-body"]}><span className={styles.kw}>from</span> <span className={styles.cls}>n00dles</span> <span className={styles.kw}>import</span> agent, pipeline, parallel, run{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;gpt-4o&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>scrape_news</span>(query: <span className={styles.cls}>str</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>list</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Scrape latest news articles for the query.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;gpt-4o&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>scrape_twitter</span>(query: <span className={styles.cls}>str</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>list</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Pull relevant recent posts for the query.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;claude-sonnet-4-6&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>merge_signals</span>(scrape_news: <span className={styles.cls}>list</span>, scrape_twitter: <span className={styles.cls}>list</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>dict</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Merge and rank all signals by relevance.&quot;&quot;&quot;</span>{"\n\n"}<span className={styles.cm}># parallel() runs both scrapers simultaneously</span>{"\n"}intel_pipeline <span className={styles.op}>=</span> pipeline({"\n"}    parallel(scrape_news, scrape_twitter) <span className={styles.op}>&gt;&gt;</span> merge_signals,{"\n"}    timeout<span className={styles.op}>=</span><span className={styles.num}>20</span>{"\n"})
 result <span className={styles.op}>=</span> run(intel_pipeline, query<span className={styles.op}>=</span><span className={styles.str}>&quot;AI regulation 2026&quot;</span>)</div>
               </div>
               <div className={codePane(2)}>
@@ -363,7 +363,7 @@ result <span className={styles.op}>=</span> run(triage, text<span className={sty
         <div className={styles.container}>
           <div className={`${styles.sh} ${styles.center}`} data-reveal>
             <div className={`${styles.eyebrow} ${styles.center}`}>Comparison</div>
-            <h2 className={styles.h2} id="cmp-h">How n00dles stacks up.</h2>
+            <h2 className={styles.h2} id="cmp-h">How n<span className={styles.accent}>00</span>dles stacks up.</h2>
             <p>We built what we wished existed when we were fighting LangChain at 2am.</p>
           </div>
           <div style={{ overflowX: "auto" }} data-reveal>
@@ -399,7 +399,7 @@ result <span className={styles.op}>=</span> run(triage, text<span className={sty
         <div className={styles.container}>
           <div className={`${styles.sh} ${styles.center}`} data-reveal>
             <div className={`${styles.eyebrow} ${styles.center}`}>Use cases</div>
-            <h2 className={styles.h2} id="uc-h">What engineers build with n00dles.</h2>
+            <h2 className={styles.h2} id="uc-h">What engineers build with n<span className={styles.accent}>00</span>dles.</h2>
           </div>
           <div className={styles["uc-grid"]}>
             <div className={styles.uc} data-reveal data-delay="1"><div className={styles["uc-tag"]}>Research &amp; Analysis</div><div className={styles["uc-title"]}>Deep research pipelines</div><div className={styles["uc-body"]}>Chain a web scraper → summarizer → analyst → report writer. Run dozens of parallel research threads. Get structured reports from raw web data in seconds.</div></div>

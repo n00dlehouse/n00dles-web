@@ -139,7 +139,7 @@ export function AboutClient() {
           <div style={{ textAlign: "center" }} data-reveal>
             <div className={styles["section-eyebrow"]}>How we work</div>
             <h2 style={{ fontFamily: "var(--fd)", fontSize: "clamp(28px,4vw,48px)", fontWeight: 600, letterSpacing: "-0.02em" }}>
-              The n00dles philosophy
+              The n<span className={styles.accent}>00</span>dles philosophy
             </h2>
           </div>
           <div className={styles["values-grid"]} data-reveal>

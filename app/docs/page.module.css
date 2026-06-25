@@ -358,10 +358,36 @@
   background: rgba(226, 75, 74, 0.08);
   border: 1px solid rgba(226, 75, 74, 0.2);
 }
+.callout.soon {
+  background: var(--ydim);
+  border: 1px solid var(--border-mid);
+}
 .callout-icon {
   flex-shrink: 0;
   font-size: 16px;
   line-height: 1.4;
+}
+
+/* COMING SOON */
+.soon-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--fm);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  background: var(--ydim);
+  border: 1px solid var(--border-mid);
+  border-radius: 100px;
+  padding: 2px 9px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.sb-link .soon-badge {
+  font-size: 9px;
+  padding: 1px 6px;
 }
 .code-block {
   background: #05050d;

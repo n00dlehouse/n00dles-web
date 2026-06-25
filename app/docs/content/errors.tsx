@@ -22,7 +22,19 @@ export function Body({ styles }: DocBodyProps) {
         <pre><span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;claude-sonnet-4-6&quot;</span>, retry<span className={styles.op}>=</span><span className={styles.num}>5</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>flaky_call</span>(x: <span className={styles.cls}>str</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>str</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;...&quot;&quot;&quot;</span>{"\n"}<span className={styles.cm}># backoff: ~1s, ~2s, ~4s, ~8s, ~16s (± jitter), then raises</span></pre>
       </div>
 
-      <h2 className={styles["doc-h2"]} id="circuit-breakers">Circuit breakers</h2>
+      <h2 className={styles["doc-h2"]} id="circuit-breakers">
+        Circuit breakers<span className={styles["soon-badge"]}>Soon</span>
+      </h2>
+      <div className={`${styles.callout} ${styles.soon}`}>
+        <span className={styles["callout-icon"]}>🔜</span>
+        <div>
+          <strong>Coming soon.</strong> <code className={styles.code}>CircuitBreaker</code> isn&apos;t
+          in the current release yet — the section below describes the planned design.{" "}
+          <code className={styles.code}>retry</code> (above) and{" "}
+          <code className={styles.code}>fallback=</code> agents are available today and cover most
+          of the same failure modes.
+        </div>
+      </div>
       <p className={styles["doc-p"]}>
         If an agent fails its retry budget <code className={styles.code}>N</code>{" "}
         times in a row across separate calls (not just within one run), its circuit opens —

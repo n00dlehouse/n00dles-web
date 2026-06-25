@@ -10,6 +10,17 @@ export const meta: DocMeta = {
 export function Body({ styles }: DocBodyProps) {
   return (
     <>
+      <div className={`${styles.callout} ${styles.soon}`}>
+        <span className={styles["callout-icon"]}>🔜</span>
+        <div>
+          <strong>Coming soon.</strong> The <code className={styles.code}>noodles</code> CLI
+          isn&apos;t in the current release yet — everything below describes the planned
+          design. Today, ship a pipeline by deploying your own Python process (Docker, a
+          serverless function, a long-running worker) and calling <code className={styles.code}>run()</code> /{" "}
+          <code className={styles.code}>arun()</code> directly.
+        </div>
+      </div>
+
       <h2 className={styles["doc-h2"]} id="cli">The deploy CLI</h2>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>bash</span></div>

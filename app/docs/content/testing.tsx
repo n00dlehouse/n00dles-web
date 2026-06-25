@@ -10,6 +10,18 @@ export const meta: DocMeta = {
 export function Body({ styles }: DocBodyProps) {
   return (
     <>
+      <div className={`${styles.callout} ${styles.soon}`}>
+        <span className={styles["callout-icon"]}>🔜</span>
+        <div>
+          <strong>Coming soon.</strong> <code className={styles.code}>mock_agent()</code> and{" "}
+          <code className={styles.code}>mock_pipeline()</code> aren&apos;t in the current release
+          yet — everything below describes the planned design. Today, pass a custom{" "}
+          <code className={styles.code}>provider=</code> to <code className={styles.code}>@agent</code>{" "}
+          (any object with an async <code className={styles.code}>complete()</code> method) to stub
+          out the LLM call in tests.
+        </div>
+      </div>
+
       <h2 className={styles["doc-h2"]} id="mock-agent">Mocking individual agents</h2>
       <p className={styles["doc-p"]}>
         <code className={styles.code}>mock_agent</code>{" "}

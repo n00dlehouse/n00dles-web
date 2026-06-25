@@ -34,7 +34,7 @@ export function Body({ styles }: DocBodyProps) {
       </p>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>python</span></div>
-        <pre><span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;claude-sonnet-4-6&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>merge_signals</span>(news: <span className={styles.cls}>list</span>, tweets: <span className={styles.cls}>list</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>dict</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Merge and rank signals. Keys match the upstream agent names: scrape_news, scrape_twitter.&quot;&quot;&quot;</span></pre>
+        <pre><span className={styles.kw}>@agent</span>(model<span className={styles.op}>=</span><span className={styles.str}>&quot;claude-sonnet-4-6&quot;</span>){"\n"}<span className={styles.kw}>def</span> <span className={styles.fn}>merge_signals</span>(scrape_news: <span className={styles.cls}>list</span>, scrape_twitter: <span className={styles.cls}>list</span>) <span className={styles.op}>-&gt;</span> <span className={styles.cls}>dict</span>:{"\n"}    <span className={styles.str}>&quot;&quot;&quot;Merge and rank both signals. Parameter names match the upstream agents&apos; function names exactly.&quot;&quot;&quot;</span></pre>
       </div>
       <div className={`${styles.callout} ${styles.info}`}>
         <span className={styles["callout-icon"]}>ℹ</span>
