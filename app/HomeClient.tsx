@@ -68,10 +68,10 @@ export function HomeClient() {
             </div>
             <div className={styles["install-cmd"]} role="code" aria-label="Install command">
               <span className={styles["cmd-dollar"]}>$</span>
-              <span className={styles["cmd-text"]}>pip install n00dles</span>
+              <span className={styles["cmd-text"]}>pip install get-n00dles</span>
               <button
                 className={`${styles["copy-btn-sm"]}${copied ? ` ${styles.copied}` : ""}`}
-                onClick={() => copy("pip install n00dles")}
+                onClick={() => copy("pip install get-n00dles")}
                 aria-label="Copy install command"
               >
                 {copied ? "copied!" : "copy"}

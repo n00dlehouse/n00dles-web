@@ -15,7 +15,7 @@ export function Body({ styles }: DocBodyProps) {
       <p className={styles["doc-p"]}>Install, set a key, define three agents, chain them, run. That&apos;s the whole thing:</p>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>bash</span></div>
-        <pre>pip install n00dles{"\n"}export ANTHROPIC_API_KEY=&quot;sk-ant-...&quot;</pre>
+        <pre>pip install get-n00dles{"\n"}export ANTHROPIC_API_KEY=&quot;sk-ant-...&quot;</pre>
       </div>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>python — pipeline.py</span></div>

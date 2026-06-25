@@ -74,12 +74,12 @@ export function QuickstartClient() {
                   <span className={styles["code-lang"]}>bash</span>
                   <button
                     className={`${styles["code-copy"]}${copied0 ? ` ${styles.copied}` : ""}`}
-                    onClick={() => copy0("pip install n00dles")}
+                    onClick={() => copy0("pip install get-n00dles")}
                   >
                     {copied0 ? "copied!" : "copy"}
                   </button>
                 </div>
-                <pre>pip install n00dles</pre>
+                <pre>pip install get-n00dles</pre>
               </div>
               <button className={styles["step-continue"]} onClick={nextStep}>Installed ✓ — Continue →</button>
             </div>

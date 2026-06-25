@@ -27,21 +27,21 @@ export function Body({ styles }: DocBodyProps) {
           <span className={styles["code-lang"]}>bash</span>
           <button
             className={`${styles["code-copy"]}${copied0 ? ` ${styles.copied}` : ""}`}
-            onClick={() => copy0("pip install n00dles")}
+            onClick={() => copy0("pip install get-n00dles")}
           >
             {copied0 ? "copied!" : "copy"}
           </button>
         </div>
-        <pre>pip install n00dles</pre>
+        <pre>pip install get-n00dles</pre>
       </div>
       <p className={styles["doc-p"]}>Or with Poetry:</p>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>bash</span></div>
-        <pre>poetry add n00dles</pre>
+        <pre>poetry add get-n00dles</pre>
       </div>
       <div className={`${styles.callout} ${styles.info}`}>
         <span className={styles["callout-icon"]}>ℹ</span>
-        <div>For the latest unreleased features, install from GitHub: <code className={styles.code}>pip install git+https://github.com/n00dlehouse</code></div>
+        <div>For the latest unreleased features, install from GitHub: <code className={styles.code}>pip install git+https://github.com/n00dlehouse/n00dles-py</code></div>
       </div>
 
       <h2 className={styles["doc-h2"]} id="api-keys">Configure API keys</h2>
