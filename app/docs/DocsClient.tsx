@@ -79,7 +79,7 @@ export function DocsClient() {
           </div>
           <div className={styles["sb-version"]}>
             <span>n00dles</span>
-            <span className={styles["sb-version-badge"]}>v0.1.0</span>
+            <span className={styles["sb-version-badge"]}>v0.3.0</span>
           </div>
 
           {SIDEBAR.map((section) => (

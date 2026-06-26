@@ -58,7 +58,7 @@ export function Body({ styles }: DocBodyProps) {
       <h2 className={styles["doc-h2"]} id="verify">Verify installation</h2>
       <div className={styles["code-block"]}>
         <div className={styles["code-block-hd"]}><span className={styles["code-lang"]}>python</span></div>
-        <pre><span className={styles.kw}>from</span> <span className={styles.cls}>n00dles</span> <span className={styles.kw}>import</span> version{"\n"}<span className={styles.fn}>print</span>(version())  <span className={styles.cm}># → &quot;0.1.0&quot;</span></pre>
+        <pre><span className={styles.kw}>import</span> <span className={styles.cls}>n00dles</span>{"\n"}<span className={styles.fn}>print</span>(n00dles.__version__)  <span className={styles.cm}># → &quot;0.3.0&quot;</span></pre>
       </div>
     </>
   );

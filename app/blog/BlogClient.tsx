@@ -120,8 +120,22 @@ export function BlogClient() {
         <div className={styles.container}>
           <div className={styles["changelog-wrap"]}>
             <div className={styles["cl-entry"]} data-reveal>
-              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.2.0</div><div className={styles["cl-date"]}>Jun 2026</div></div>
+              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.3.0</div><div className={styles["cl-date"]}>Jun 2026</div></div>
               <div className={`${styles["cl-dot"]} ${styles.major}`} />
+              <div>
+                <div className={styles["cl-title"]}>Testing utilities — no network calls in tests</div>
+                <div className={styles["cl-desc"]}>The last documented-but-unbuilt gap from the testing guide: agents could only be tested against a real provider or a hand-rolled fake.</div>
+                <ul className={styles["cl-items"]}>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>mock_agent()</code> — stub one agent&apos;s LLM call with a fixed value, validated against its declared return type</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>mock_pipeline()</code> — stub an entire pipeline&apos;s execution at once, for tests that only care what calls it</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Both work as decorators (<code className={styles["mono-sm"]}>@mock_agent(...)</code>) as well as <code className={styles["mono-sm"]}>with</code> blocks</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.imp}`}>IMP</span><code className={styles["mono-sm"]}>raises=</code> goes through the agent&apos;s real retry/fallback handling instead of skipping it</li>
+                </ul>
+              </div>
+            </div>
+            <div className={styles["cl-entry"]} data-reveal>
+              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.2.0</div><div className={styles["cl-date"]}>Jun 2026</div></div>
+              <div className={styles["cl-dot"]} />
               <div>
                 <div className={styles["cl-title"]}>Parallel execution and conditional routing</div>
                 <div className={styles["cl-desc"]}>Fan-out and branching, the two biggest gaps from the v0.1.0 sequential-only release.</div>
@@ -152,8 +166,8 @@ export function BlogClient() {
             </div>
             <div style={{ marginTop: 8, padding: "14px 16px", borderRadius: "var(--r-md)", background: "var(--ydim)", border: "1px solid var(--border-mid)", fontSize: 14, lineHeight: 1.6, color: "var(--ts)" }}>
               🔜 Circuit breaker, distributed (Redis/Postgres) state backends, Langfuse/Helicone exporters,
-              mock testing utilities, and the <code className={styles["mono-sm"]}>noodles</code> deploy CLI
-              are all on the roadmap and described in the docs, but none have shipped yet — see{" "}
+              and the <code className={styles["mono-sm"]}>noodles</code> deploy CLI are all on the
+              roadmap and described in the docs, but none have shipped yet — see{" "}
               <Link href="/docs">the docs</Link> for current status on each.
             </div>
           </div>
@@ -171,7 +185,7 @@ export function BlogClient() {
             <div className={styles["footer-col"]}><h5>Developers</h5><ul><li><Link href="/docs">Docs</Link></li><li><Link href="/quickstart">Quickstart</Link></li><li><a href="https://github.com/n00dlehouse">GitHub</a></li></ul></div>
             <div className={styles["footer-col"]}><h5>Company</h5><ul><li><Link href="/about">About</Link></li><li><Link href="/blog">Blog</Link></li><li><a href="https://discord.gg/n00dles">Discord</a></li></ul></div>
           </div>
-          <div className={styles["footer-bottom"]}><span>© 2026 n00dles. MIT License.</span><span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.2.0-beta</span></div>
+          <div className={styles["footer-bottom"]}><span>© 2026 n00dles. MIT License.</span><span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.3.0-beta</span></div>
         </div>
       </footer>
     </>

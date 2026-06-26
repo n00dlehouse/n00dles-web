@@ -134,7 +134,7 @@ export default async function BlogPostPage({
           </div>
           <div className={blogStyles["footer-bottom"]}>
             <span>© 2026 n00dles. MIT License.</span>
-            <span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.2.0-beta</span>
+            <span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.3.0-beta</span>
           </div>
         </div>
       </footer>

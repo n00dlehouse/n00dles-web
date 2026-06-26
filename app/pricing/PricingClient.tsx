@@ -299,7 +299,7 @@ export function PricingClient() {
           </div>
           <div className={styles["footer-bottom"]}>
             <span>© 2026 n00dles. MIT License.</span>
-            <span className={styles.mono} style={{ fontSize: 12 }}>v0.1.0-beta</span>
+            <span className={styles.mono} style={{ fontSize: 12 }}>v0.3.0-beta</span>
           </div>
         </div>
       </footer>

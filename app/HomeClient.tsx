@@ -42,7 +42,7 @@ export function HomeClient() {
           <div className={styles["hero-content"]}>
             <div className={styles["hero-badge"]}>
               <div className={styles["hero-badge-dot"]} aria-hidden="true" />
-              v0.1.0 public beta — open source, MIT licensed
+              v0.3.0 public beta — open source, MIT licensed
             </div>
             <h1 className={styles["hero-title"]} id="hero-title">
               <span className={styles.l1}>Your LLM pipelines</span>
@@ -495,7 +495,7 @@ result <span className={styles.op}>=</span> run(triage, text<span className={sty
           </div>
           <div className={styles["footer-bottom"]}>
             <span>© 2026 n00dles. MIT License. Built with 🍜</span>
-            <span className={styles.mono} style={{ fontSize: 12 }}>v0.1.0-beta</span>
+            <span className={styles.mono} style={{ fontSize: 12 }}>v0.3.0-beta</span>
           </div>
         </div>
       </footer>
