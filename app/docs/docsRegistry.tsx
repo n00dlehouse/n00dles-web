@@ -129,7 +129,7 @@ export const SIDEBAR: { id: string; label: string; items: SidebarItem[] }[] = [
     label: "Guides",
     items: [
       { id: "deploy", label: "Production deploy", soon: true },
-      { id: "testing", label: "Testing", soon: true },
+      { id: "testing", label: "Testing", soon: false },
       { id: "obs", label: "Observability", soon: false },
     ],
   },
