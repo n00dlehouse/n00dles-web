@@ -10,7 +10,13 @@ const DEFAULT_OPEN_SECTIONS = ["start", "concepts", "api", "guides", "ex"];
 export function DocsClient() {
   const [navOpen, setNavOpen] = useState(false);
   const [openSections, setOpenSections] = useState<string[]>(DEFAULT_OPEN_SECTIONS);
-  const [activePage, setActivePage] = useState("installation");
+  const [activePage, setActivePage] = useState(() => {
+    if (typeof window !== "undefined") {
+      const id = window.location.hash.slice(1);
+      if (id && DOCS[id]) return id;
+    }
+    return "installation";
+  });
 
   const toggleSection = (id: string) =>
     setOpenSections((sections) =>

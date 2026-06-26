@@ -4,12 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import { MarketingNav } from "@/components/MarketingNav";
 import { useReveal } from "@/lib/useReveal";
+import { FEATURED_SLUG, POSTS } from "./blogRegistry";
 import styles from "./page.module.css";
 
 export function BlogClient() {
   useReveal();
-  const [tab, setTab] = useState<"blog" | "cl">("blog");
+  const [tab, setTab] = useState<"blog" | "cl">(() =>
+    typeof window !== "undefined" && window.location.hash === "#cl" ? "cl" : "blog"
+  );
   const isBlog = tab === "blog";
+
+  const featured = POSTS.find((p) => p.meta.slug === FEATURED_SLUG)!;
+  const gridPosts = POSTS.filter((p) => p.meta.slug !== FEATURED_SLUG);
 
   return (
     <>
@@ -48,7 +54,7 @@ export function BlogClient() {
       {/* BLOG */}
       <div className={`${styles["blog-tab"]}${isBlog ? ` ${styles.active}` : ""}`}>
         <div className={styles.container}>
-          <div className={styles["featured-post"]} data-reveal>
+          <Link href={`/blog/${featured.meta.slug}`} className={styles["featured-post"]} data-reveal>
             <div className={styles["featured-img"]}>
               <div className={styles["featured-img-bg"]} aria-hidden="true" />
               <svg viewBox="0 0 300 160" fill="none" style={{ width: "100%", maxWidth: 300, position: "relative", zIndex: 1 }}>
@@ -64,55 +70,39 @@ export function BlogClient() {
             </div>
             <div className={styles["featured-content"]}>
               <div className={styles["post-tag"]}>Featured</div>
-              <div className={styles["featured-title"]}>Why we built n00dles from scratch instead of patching LangChain</div>
-              <div className={styles["featured-excerpt"]}>Six months, 4,000 lines of boilerplate, and one 2am incident later — we decided the existing options weren&apos;t good enough. Here&apos;s the full story.</div>
+              <div className={styles["featured-title"]}>{featured.meta.title}</div>
+              <div className={styles["featured-excerpt"]}>{featured.meta.excerpt}</div>
               <div className={styles["post-meta"]}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}><div className={styles["post-av"]}>Z</div>Zara Okonkwo</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div className={styles["post-av"]}>{featured.meta.author.initials[0]}</div>
+                  {featured.meta.author.name}
+                </div>
                 <span style={{ color: "var(--border-mid)" }}>·</span>
-                <span>June 18, 2026</span>
+                <span>{featured.meta.date}</span>
                 <span style={{ color: "var(--border-mid)" }}>·</span>
-                <span>9 min</span>
+                <span>{featured.meta.readTime}</span>
               </div>
             </div>
-          </div>
+          </Link>
 
           <div className={styles["posts-grid"]}>
-            <div className={styles["post-card"]} data-reveal data-delay="1">
-              <div className={styles["post-card-tag"]}>Engineering</div>
-              <div className={styles["post-card-title"]}>Parallel agents with one line of code</div>
-              <div className={styles["post-card-excerpt"]}>Most LLM pipelines are embarrassingly sequential. Here&apos;s how n00dles&apos; parallel() primitive works under the hood.</div>
-              <div className={styles["post-card-meta"]}><span>Ryo Tanaka · May 31</span><span className={styles["read-more"]}>6 min →</span></div>
-            </div>
-            <div className={styles["post-card"]} data-reveal data-delay="2">
-              <div className={styles["post-card-tag"]}>Production</div>
-              <div className={styles["post-card-title"]}>State management in production LLM pipelines</div>
-              <div className={styles["post-card-excerpt"]}>Checkpointing, distributed locks, crash recovery, and why your in-memory state store will eventually betray you.</div>
-              <div className={styles["post-card-meta"]}><span>Leo Marchetti · May 22</span><span className={styles["read-more"]}>11 min →</span></div>
-            </div>
-            <div className={styles["post-card"]} data-reveal data-delay="3">
-              <div className={styles["post-card-tag"]}>Opinion</div>
-              <div className={styles["post-card-title"]}>The hidden cost of LangChain</div>
-              <div className={styles["post-card-excerpt"]}>It&apos;s not just the boilerplate. The real cost is the abstraction debt you accumulate every time you paper over a bad API.</div>
-              <div className={styles["post-card-meta"]}><span>Zara Okonkwo · May 8</span><span className={styles["read-more"]}>7 min →</span></div>
-            </div>
-            <div className={styles["post-card"]} data-reveal data-delay="1">
-              <div className={styles["post-card-tag"]}>Tutorial</div>
-              <div className={styles["post-card-title"]}>Building a deep research pipeline in 50 lines</div>
-              <div className={styles["post-card-excerpt"]}>Web scraping, parallel analysis, synthesis, and structured output — all wired with n00dles in one afternoon.</div>
-              <div className={styles["post-card-meta"]}><span>Priya Sharma · April 29</span><span className={styles["read-more"]}>14 min →</span></div>
-            </div>
-            <div className={styles["post-card"]} data-reveal data-delay="2">
-              <div className={styles["post-card-tag"]}>Deep dive</div>
-              <div className={styles["post-card-title"]}>How we think about retries in multi-agent systems</div>
-              <div className={styles["post-card-excerpt"]}>Not all failures are equal. Transient errors, rate limits, semantic failures, and timeouts each need their own strategy.</div>
-              <div className={styles["post-card-meta"]}><span>Leo Marchetti · April 14</span><span className={styles["read-more"]}>8 min →</span></div>
-            </div>
-            <div className={styles["post-card"]} data-reveal data-delay="3">
-              <div className={styles["post-card-tag"]}>Release</div>
-              <div className={styles["post-card-title"]}>Announcing n00dles v0.1.0 — public beta</div>
-              <div className={styles["post-card-excerpt"]}>After six months of internal development and two production deployments, we&apos;re open-sourcing n00dles.</div>
-              <div className={styles["post-card-meta"]}><span>Zara Okonkwo · April 1</span><span className={styles["read-more"]}>5 min →</span></div>
-            </div>
+            {gridPosts.map((p, i) => (
+              <Link
+                key={p.meta.slug}
+                href={`/blog/${p.meta.slug}`}
+                className={styles["post-card"]}
+                data-reveal
+                data-delay={String((i % 3) + 1)}
+              >
+                <div className={styles["post-card-tag"]}>{p.meta.tag}</div>
+                <div className={styles["post-card-title"]}>{p.meta.title}</div>
+                <div className={styles["post-card-excerpt"]}>{p.meta.excerpt}</div>
+                <div className={styles["post-card-meta"]}>
+                  <span>{p.meta.author.name} · {p.meta.date.replace(/, \d{4}$/, "")}</span>
+                  <span className={styles["read-more"]}>{p.meta.readTime} →</span>
+                </div>
+              </Link>
+            ))}
           </div>
 
           <div className={styles.newsletter} data-reveal>
@@ -130,61 +120,41 @@ export function BlogClient() {
         <div className={styles.container}>
           <div className={styles["changelog-wrap"]}>
             <div className={styles["cl-entry"]} data-reveal>
-              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.1.0</div><div className={styles["cl-date"]}>Jun 2026</div></div>
+              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.2.0</div><div className={styles["cl-date"]}>Jun 2026</div></div>
               <div className={`${styles["cl-dot"]} ${styles.major}`} />
               <div>
+                <div className={styles["cl-title"]}>Parallel execution and conditional routing</div>
+                <div className={styles["cl-desc"]}>Fan-out and branching, the two biggest gaps from the v0.1.0 sequential-only release.</div>
+                <ul className={styles["cl-items"]}>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>parallel()</code> and the <code className={styles["mono-sm"]}>|</code> operator — concurrent fan-out with automatic result merging by agent name</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>branch()</code> — route to one of several agents based on a classifier&apos;s output</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>max_concurrency</code> on <code className={styles["mono-sm"]}>parallel()</code> for rate-limit-conscious fan-out</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.imp}`}>IMP</span>Partial-resume now checkpoints each member of a <code className={styles["mono-sm"]}>parallel()</code> group independently</li>
+                </ul>
+              </div>
+            </div>
+            <div className={styles["cl-entry"]} data-reveal>
+              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.1.0</div><div className={styles["cl-date"]}>Apr 2026</div></div>
+              <div className={styles["cl-dot"]} />
+              <div>
                 <div className={styles["cl-title"]}>Public beta — open source release</div>
-                <div className={styles["cl-desc"]}>First public release. Everything is stable enough for production use. Expect breaking changes before v1.0.</div>
+                <div className={styles["cl-desc"]}>First public release. Sequential composition only — see the post below for what was deliberately left out.</div>
                 <ul className={styles["cl-items"]}>
                   <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>@agent</code> decorator with full type validation</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>pipeline()</code>, <code className={styles["mono-sm"]}>parallel()</code>, <code className={styles["mono-sm"]}>branch()</code> primitives</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Support for Anthropic, OpenAI, Mistral, Gemini, Ollama</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Persistent state store (Redis + SQLite adapters)</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Structured trace logging with OpenTelemetry export</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>noodles deploy</code> CLI command</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>pipeline()</code> and <code className={styles["mono-sm"]}>&gt;&gt;</code> for sequential composition, plus <code className={styles["mono-sm"]}>run()</code>/<code className={styles["mono-sm"]}>arun()</code></li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Provider support for Anthropic, OpenAI, Mistral, Gemini, Ollama, and more via litellm</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Retry with exponential backoff + jitter, per-node timeouts, and fallback agents</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>SQLite state store with checkpoint-and-resume, on by default</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Pydantic v2 validation for structured agent outputs</li>
+                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Structured trace events with an optional OpenTelemetry exporter</li>
                 </ul>
               </div>
             </div>
-            <div className={styles["cl-entry"]} data-reveal>
-              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.0.9</div><div className={styles["cl-date"]}>May 2026</div></div>
-              <div className={styles["cl-dot"]} />
-              <div>
-                <div className={styles["cl-title"]}>Parallel execution + Pydantic validation</div>
-                <div className={styles["cl-desc"]}>Rewrote the executor to use a proper async task graph instead of sequential coroutines.</div>
-                <ul className={styles["cl-items"]}>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>parallel()</code> with automatic fan-out and result merging</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Pydantic v2 models as agent output types</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.imp}`}>IMP</span>40% reduction in per-agent overhead</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.fix}`}>FIX</span>State deserialization edge case with nested dicts</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.fix}`}>FIX</span>Timeout not propagated correctly in nested pipelines</li>
-                </ul>
-              </div>
-            </div>
-            <div className={styles["cl-entry"]} data-reveal>
-              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.0.8</div><div className={styles["cl-date"]}>Apr 2026</div></div>
-              <div className={styles["cl-dot"]} />
-              <div>
-                <div className={styles["cl-title"]}>Retry engine + circuit breaker</div>
-                <ul className={styles["cl-items"]}>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Exponential backoff with jitter per agent</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Circuit breaker — opens after N consecutive failures</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Per-provider rate limit detection and backoff</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.brk}`}>BRK</span><code className={styles["mono-sm"]}>on_error</code> callback signature changed — see migration guide</li>
-                </ul>
-              </div>
-            </div>
-            <div className={styles["cl-entry"]} data-reveal>
-              <div className={styles["cl-date-col"]}><div className={styles["cl-version"]}>v0.0.7</div><div className={styles["cl-date"]}>Mar 2026</div></div>
-              <div className={styles["cl-dot"]} />
-              <div>
-                <div className={styles["cl-title"]}>Initial internal alpha</div>
-                <div className={styles["cl-desc"]}>First version used in production. Sequential pipelines only, no parallel support. But it worked.</div>
-                <ul className={styles["cl-items"]}>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span><code className={styles["mono-sm"]}>@agent</code> decorator (sequential only)</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Basic <code className={styles["mono-sm"]}>&gt;&gt;</code> pipeline chaining</li>
-                  <li><span className={`${styles["cl-badge"]} ${styles.new}`}>NEW</span>Anthropic and OpenAI providers</li>
-                </ul>
-              </div>
+            <div style={{ marginTop: 8, padding: "14px 16px", borderRadius: "var(--r-md)", background: "var(--ydim)", border: "1px solid var(--border-mid)", fontSize: 14, lineHeight: 1.6, color: "var(--ts)" }}>
+              🔜 Circuit breaker, distributed (Redis/Postgres) state backends, Langfuse/Helicone exporters,
+              mock testing utilities, and the <code className={styles["mono-sm"]}>noodles</code> deploy CLI
+              are all on the roadmap and described in the docs, but none have shipped yet — see{" "}
+              <Link href="/docs">the docs</Link> for current status on each.
             </div>
           </div>
         </div>
@@ -201,7 +171,7 @@ export function BlogClient() {
             <div className={styles["footer-col"]}><h5>Developers</h5><ul><li><Link href="/docs">Docs</Link></li><li><Link href="/quickstart">Quickstart</Link></li><li><a href="https://github.com/n00dlehouse">GitHub</a></li></ul></div>
             <div className={styles["footer-col"]}><h5>Company</h5><ul><li><Link href="/about">About</Link></li><li><Link href="/blog">Blog</Link></li><li><a href="https://discord.gg/n00dles">Discord</a></li></ul></div>
           </div>
-          <div className={styles["footer-bottom"]}><span>© 2026 n00dles. MIT License.</span><span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.1.0-beta</span></div>
+          <div className={styles["footer-bottom"]}><span>© 2026 n00dles. MIT License.</span><span style={{ fontFamily: "var(--fm)", fontSize: 12 }}>v0.2.0-beta</span></div>
         </div>
       </footer>
     </>
